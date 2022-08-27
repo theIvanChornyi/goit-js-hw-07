@@ -12,6 +12,15 @@ function createGallery(galleryItemsArray, galleryContainer) {
 
 createGallery(galleryItems, galleryPhotoContainer);
 
+let lightbox = new SimpleLightbox('.gallery a',
+    {
+      captions: true,
+      captionType: 'attr',
+      captionsData:	'alt',
+      captionPosition: 'bottom',
+      captionDelay: 250,
+      docClose: true,
+    });
 
 function getMarkupString(galleryItemsArray) {
   const MarkupString = galleryItemsArray
@@ -24,24 +33,11 @@ function getMarkupString(galleryItemsArray) {
   .join("");
   return MarkupString;
 }
+
 function createGalleryEl(markupString, galleryContainer) {
   galleryContainer.innerHTML = markupString;
 }
+
 function zoomPicture(event) {
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-
   event.preventDefault();
-
-  let lightbox = new SimpleLightbox('.gallery a',
-    {
-      captions: true,
-      captionType: 'attr',
-      captionsData:	'alt',
-      captionPosition: 'bottom',
-      captionDelay: 250,
-      docClose: true,
-    });
-
 }
